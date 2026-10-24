@@ -3,6 +3,8 @@ Họ tên: Nguyễn Minh Tuấn
 Mã sinh viên: 202419010
 */
 
+//bắt lỗi về trạng thái
+
 public class DeviceNotReadyException : Exception
 {
     public DeviceNotReadyException(string deviceId, DeviceStatus currentStatus)
@@ -11,8 +13,6 @@ public class DeviceNotReadyException : Exception
         DeviceId = deviceId;
         CurrentStatus = currentStatus;
     }
-
     public string DeviceId { get; }
-
     public DeviceStatus CurrentStatus { get; }
 }

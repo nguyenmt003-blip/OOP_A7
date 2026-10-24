@@ -33,7 +33,7 @@ public class WirelessMicrophone : TeachingDevice
 
     public override bool IsReadyForUse()
     {
-        return Status == DeviceStatus.Available && BatteryLevel > 0 && SignalQuality > 0;
+        return Status == DeviceStatus.Available && BatteryLevel >= 30 && SignalQuality >= 40;
     }
 
     public override double GetDefaultPriorityScore()

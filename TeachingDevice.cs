@@ -2,7 +2,6 @@
 Họ tên: Nguyễn Minh Tuấn
 Mã sinh viên: 202419010
 */
-
 public enum DeviceStatus
 {
     Available,
@@ -12,6 +11,13 @@ public enum DeviceStatus
 
 public abstract class TeachingDevice : IIdentifiable
 {
+    
+
+    public string Id { get; }
+    public string Name { get; }
+    public string StorageLocation { get; }
+    public DeviceStatus Status { get; protected set; }
+
     protected TeachingDevice(string id, string name, string storageLocation)
     {
         if (string.IsNullOrWhiteSpace(id))
@@ -29,24 +35,14 @@ public abstract class TeachingDevice : IIdentifiable
             throw new ArgumentException("Storage location must not be null or whitespace.", nameof(storageLocation));
         }
 
-        Id = id.Trim();
-        Name = name.Trim();
-        StorageLocation = storageLocation.Trim();
+        Id = id;
+        Name = name;
+        StorageLocation = storageLocation;
         Status = DeviceStatus.Available;
     }
 
-    public string Id { get; }
-
-    public string Name { get; }
-
-    public string StorageLocation { get; }
-
-    public DeviceStatus Status { get; protected set; }
-
     public abstract bool IsReadyForUse();
-
     public abstract double GetDefaultPriorityScore();
-
     public void Borrow()
     {
         if (!IsReadyForUse())
